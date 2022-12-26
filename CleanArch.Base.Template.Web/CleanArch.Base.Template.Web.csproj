@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj" />
+    <ProjectReference Include="..\CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj" />
+    <ProjectReference Include="..\CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>

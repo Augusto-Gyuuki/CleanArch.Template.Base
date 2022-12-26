@@ -1,0 +1,22 @@
+{
+  "author": "Augusto Almeida",
+  "classifications": [ "Web" ],
+  "name": "DDD, MediatR, CQRS, EFCore",
+  "shortName": "cleanArchbase",
+  "tags": {
+    "language": "C#"
+  },
+  "sourceName": "CleanArch.Base.Template",
+  "identity": "CleanArch.Base.Template",
+  "preferNameDirectory": true,
+  "symbols": {
+    "databaseChoice": {
+      "type": "choice",
+      "options": [
+        "SQL Server",
+        "MySQL",
+        "PostgreSQL"
+      ]
+    }
+  }
+}
