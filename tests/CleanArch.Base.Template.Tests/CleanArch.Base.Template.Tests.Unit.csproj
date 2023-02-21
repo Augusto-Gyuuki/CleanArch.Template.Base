@@ -26,10 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj" />
-    <ProjectReference Include="..\CleanArch.Base.Template.Domain\CleanArch.Base.Template.Domain.csproj" />
-    <ProjectReference Include="..\CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj" />
-    <ProjectReference Include="..\CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj" />
+    <ProjectReference Include="..\..\src\CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj" />
+    <ProjectReference Include="..\..\src\CleanArch.Base.Template.Domain\CleanArch.Base.Template.Domain.csproj" />
+    <ProjectReference Include="..\..\src\CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\CleanArch.Base.Template.Persistence\CleanArch.Base.Template.Persistence.csproj" />
+    <ProjectReference Include="..\..\src\CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj" />
   </ItemGroup>
 
 </Project>

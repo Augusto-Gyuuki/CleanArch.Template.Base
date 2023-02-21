@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Web", "CleanArch.Base.Template.Web\CleanArch.Base.Template.Web.csproj", "{CBBFCFD0-E13E-4AAD-9F86-6156A6650A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Web", "src\CleanArch.Base.Template.Web\CleanArch.Base.Template.Web.csproj", "{CBBFCFD0-E13E-4AAD-9F86-6156A6650A35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Presentation", "CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj", "{27C65550-6EC0-4029-AB1F-8F834D67623D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Presentation", "src\CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj", "{27C65550-6EC0-4029-AB1F-8F834D67623D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Infrastructure", "CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj", "{CD3A8500-A7F0-413F-BF2A-583A0A1C88DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Infrastructure", "src\CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj", "{CD3A8500-A7F0-413F-BF2A-583A0A1C88DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Domain", "CleanArch.Base.Template.Domain\CleanArch.Base.Template.Domain.csproj", "{E9377F7F-73E8-445D-B899-CB5D73AB1630}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Domain", "src\CleanArch.Base.Template.Domain\CleanArch.Base.Template.Domain.csproj", "{E9377F7F-73E8-445D-B899-CB5D73AB1630}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Application", "CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj", "{040CA6EC-860A-4423-9ABA-6F9546C01C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Application", "src\CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj", "{040CA6EC-860A-4423-9ABA-6F9546C01C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Tests", "CleanArch.Base.Template.Tests\CleanArch.Base.Template.Tests.csproj", "{64877A53-704A-4465-9D24-D7539E48239D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Tests.Unit", "tests\CleanArch.Base.Template.Tests\CleanArch.Base.Template.Tests.Unit.csproj", "{64877A53-704A-4465-9D24-D7539E48239D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8424744F-6DB6-4039-8E8D-FA5C13419462}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D0A1196A-2532-4DB2-A052-F9F72AEAB3AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Persistence", "src\CleanArch.Base.Template.Persistence\CleanArch.Base.Template.Persistence.csproj", "{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +51,22 @@ Global
 		{64877A53-704A-4465-9D24-D7539E48239D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64877A53-704A-4465-9D24-D7539E48239D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64877A53-704A-4465-9D24-D7539E48239D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CBBFCFD0-E13E-4AAD-9F86-6156A6650A35} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
+		{27C65550-6EC0-4029-AB1F-8F834D67623D} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
+		{CD3A8500-A7F0-413F-BF2A-583A0A1C88DD} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
+		{E9377F7F-73E8-445D-B899-CB5D73AB1630} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
+		{040CA6EC-860A-4423-9ABA-6F9546C01C9E} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
+		{64877A53-704A-4465-9D24-D7539E48239D} = {D0A1196A-2532-4DB2-A052-F9F72AEAB3AB}
+		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20} = {8424744F-6DB6-4039-8E8D-FA5C13419462}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1264C2E3-7252-46CF-85CF-70B558490A45}
