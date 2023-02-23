@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  cleanarch.base.template.web:
+    image: ${DOCKER_REGISTRY-}cleanarchbasetemplateweb
+    build:
+      context: .
+      dockerfile: src/CleanArch.Base.Template.Web/Dockerfile
+    networks:
+      - CleanArch.Base.Template
+
+  seq:
+    image: datalust/seq:latest
+    hostname: seq
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5341:80"
+    networks:
+      - CleanArch.Base.Template
+
+
+networks:
+  CleanArch.Base.Template:
+    driver: bridge

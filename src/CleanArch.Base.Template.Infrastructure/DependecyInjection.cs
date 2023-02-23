@@ -1,9 +1,9 @@
 ﻿using CleanArch.Base.Template.Application.Common.Interfaces.Providers;
-using CleanArch.Base.Template.Infrastructure.Data;
 using CleanArch.Base.Template.Infrastructure.Providers;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System.Diagnostics.CodeAnalysis;
+using ILogger = Serilog.ILogger;
 
 namespace CleanArch.Base.Template.Infrastructure;
 
@@ -13,25 +13,19 @@ public static class DependecyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection service)
     {
         service
-            .AddDatabase()
-            .AddPersistance();
+            .AddLogger();
 
         service.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         return service;
     }
 
-    private static IServiceCollection AddPersistance(this IServiceCollection service)
+    private static IServiceCollection AddLogger(this IServiceCollection service)
     {
-        return service;
-    }
-
-    private static IServiceCollection AddDatabase(this IServiceCollection service)
-    {
-        service.AddDbContext<AppDbContext>(options =>
-        {
-            options.UseInMemoryDatabase("testDB");
-        });
+        service.AddSingleton<ILogger>(new LoggerConfiguration()
+                .WriteTo.Seq("http://seq:5341")
+                .Enrich.WithCorrelationId()
+                .CreateLogger());
 
         return service;
     }

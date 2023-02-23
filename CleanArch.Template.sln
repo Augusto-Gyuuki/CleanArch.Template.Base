@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8424744F-6DB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D0A1196A-2532-4DB2-A052-F9F72AEAB3AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArch.Base.Template.Persistence", "src\CleanArch.Base.Template.Persistence\CleanArch.Base.Template.Persistence.csproj", "{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Base.Template.Persistence", "src\CleanArch.Base.Template.Persistence\CleanArch.Base.Template.Persistence.csproj", "{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6F8E303A-DF19-4EDA-965A-689BA4FEA854}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FC29A04-F710-4C0B-BF5B-0DCBA041CC20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8E303A-DF19-4EDA-965A-689BA4FEA854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8E303A-DF19-4EDA-965A-689BA4FEA854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8E303A-DF19-4EDA-965A-689BA4FEA854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8E303A-DF19-4EDA-965A-689BA4FEA854}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
