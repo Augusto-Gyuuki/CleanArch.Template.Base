@@ -2,7 +2,7 @@
 
 namespace CleanArch.Base.Template.Presentation.Endpoints;
 
-public sealed class TestEnpoint : EndpointWithoutRequest
+public sealed class TestEndpoint : EndpointWithoutRequest
 {
     public override void Configure()
     {
