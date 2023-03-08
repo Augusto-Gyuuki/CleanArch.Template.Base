@@ -7,9 +7,10 @@ public sealed class TestEndpoint : EndpointWithoutRequest
     public override void Configure()
     {
         Get("all");
+        AllowAnonymous();
     }
 
-    public override Task HandleAsync(CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         throw new NotImplementedException();
     }

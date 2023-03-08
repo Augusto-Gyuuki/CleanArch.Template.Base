@@ -29,7 +29,6 @@ public static class ApplicationBuilderExtensions
                     var path = ctx.Request.Path;
                     using var reader = new StreamReader(ctx.Request.Body);
                     var requestBody = await reader.ReadToEndAsync();
-
                     var problemDetails = ApiErrorHandler.Problem(Error.Unexpected(), ctx);
                     var msgTemplate = $@"{{@Http}};
                                         ExceptionType: {{@ExceptionType}};

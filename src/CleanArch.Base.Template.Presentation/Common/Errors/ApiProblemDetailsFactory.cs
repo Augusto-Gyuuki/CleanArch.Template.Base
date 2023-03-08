@@ -67,6 +67,7 @@ public static class ApiProblemDetailsFactory
             problemDetails.Type ??= clientErrorData.First().Value;
         }
 
+
         var traceId = Activity.Current?.Id ?? httpContext?.TraceIdentifier;
         if (traceId is not null)
         {

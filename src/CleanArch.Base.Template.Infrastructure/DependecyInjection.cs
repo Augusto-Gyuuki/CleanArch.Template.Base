@@ -1,5 +1,4 @@
-﻿using CleanArch.Base.Template.Application.Common.Interfaces.Providers;
-using CleanArch.Base.Template.Infrastructure.Providers;
+﻿using CleanArch.Base.Template.Infrastructure.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using System.Diagnostics.CodeAnalysis;
@@ -10,23 +9,24 @@ namespace CleanArch.Base.Template.Infrastructure;
 [ExcludeFromCodeCoverage]
 public static class DependecyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection service)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection service, InfrastructureOptions infrastructureOptions)
     {
         service
-            .AddLogger();
-
-        service.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+            .AddLogger(infrastructureOptions.LoggerOptions);
 
         return service;
     }
 
-    private static IServiceCollection AddLogger(this IServiceCollection service)
+    private static IServiceCollection AddLogger(this IServiceCollection service, LoggerOptions loggerOptions)
     {
-        service.AddSingleton<ILogger>(new LoggerConfiguration()
-                .WriteTo.Seq("http://seq:5341")
-                .Enrich.WithCorrelationId()
-                .CreateLogger());
+        var logger = new LoggerConfiguration()
+                .WriteTo.Seq(loggerOptions.SeqUrl, loggerOptions.LogEventLevel, apiKey: loggerOptions.SeqApiKey)
+                .Enrich.WithMachineName()
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty(nameof(LoggerOptions.ApplicationName), loggerOptions.ApplicationName)
+                .CreateLogger();
 
+        service.AddSingleton<ILogger>(logger);
         return service;
     }
 }
