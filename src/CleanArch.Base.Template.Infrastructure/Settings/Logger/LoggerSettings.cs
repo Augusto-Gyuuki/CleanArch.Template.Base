@@ -1,8 +1,8 @@
 ﻿using Serilog.Events;
 
-namespace CleanArch.Base.Template.Infrastructure.Options;
+namespace CleanArch.Base.Template.Infrastructure.Settings.Logger;
 
-public sealed class LoggerOptions
+public sealed class LoggerSettings
 {
     public string ApplicationName { get; init; } = string.Empty;
 

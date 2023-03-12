@@ -10,7 +10,7 @@ namespace CleanArch.Base.Template.Presentation.Common.Extensions;
 
 public static class ApplicationBuilderExtensions
 {
-    public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder app, ILogger? logger = null)
+    public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder app)
     {
         app.UseExceptionHandler(errApp =>
         {
@@ -19,7 +19,7 @@ public static class ApplicationBuilderExtensions
                 var exHandlerFeature = ctx.Features.Get<IExceptionHandlerFeature>();
                 if (exHandlerFeature is not null)
                 {
-                    logger ??= ctx.Resolve<ILogger>();
+                    var logger = ctx.Resolve<ILogger>();
 
                     var http = exHandlerFeature.Endpoint?.DisplayName?.Split(" => ")[0];
                     var exceptionType = exHandlerFeature.Error.GetType().Name;
@@ -30,6 +30,7 @@ public static class ApplicationBuilderExtensions
                     using var reader = new StreamReader(ctx.Request.Body);
                     var requestBody = await reader.ReadToEndAsync();
                     var problemDetails = ApiErrorHandler.Problem(Error.Unexpected(), ctx);
+
                     var msgTemplate = $@"{{@Http}};
                                         ExceptionType: {{@ExceptionType}};
                                         ErrorMessage: {{@ErrorMessage}};
