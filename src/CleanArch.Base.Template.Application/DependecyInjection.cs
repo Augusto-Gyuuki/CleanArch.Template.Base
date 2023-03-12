@@ -15,6 +15,7 @@ public static class DependecyInjection
         service.AddMediatR(typeof(DependecyInjection).Assembly);
 
         service.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        service.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 
         service.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

@@ -7,15 +7,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Common\Mapping\" />
+	  <Compile Remove="Common\Mapping\**" />
+	  <EmbeddedResource Remove="Common\Mapping\**" />
+	  <None Remove="Common\Mapping\**" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FastEndpoints" Version="5.7.2.1-beta" />
+		<PackageReference Include="FastEndpoints.Swagger" Version="5.7.0" />
 		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
 		<PackageReference Include="Mapster" Version="7.4.0-pre03" />
 		<PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
 		<PackageReference Include="MediatR" Version="10.0.1" />
+		<PackageReference Include="Serilog" Version="3.0.0-dev-01862" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
 

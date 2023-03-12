@@ -1,35 +1,26 @@
 ﻿using CleanArch.Base.Template.Presentation.Common.Http;
 using ErrorOr;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace CleanArch.Base.Template.Presentation.Controllers;
+namespace CleanArch.Base.Template.Presentation.Common.Errors;
 
-[ApiController]
-[Authorize]
-public class ApiController : ControllerBase
+public static class ApiErrorHandler
 {
-    [Route("error")]
-    protected IActionResult Problem(List<Error> errors)
+    public static ProblemDetails Problem(List<Error> errors, HttpContext httpContext)
     {
-        if (!errors.Any())
-        {
-            return Problem();
-        }
-
         if (errors.All(x => x.Type == ErrorType.Validation))
         {
-            return Validationproblem(errors);
+            return ValidationProblem(errors, httpContext);
         }
 
-        HttpContext.Items[HttpContextItemKeys.Errors] = errors;
+        httpContext.Items[HttpContextItemKeys.Errors] = errors;
 
-        return Problem(errors.First());
+        return Problem(errors.First(), httpContext);
     }
 
-    private IActionResult Problem(Error error)
+    public static ProblemDetails Problem(Error error, HttpContext httpContext)
     {
         var statusCode = error.Type switch
         {
@@ -41,10 +32,10 @@ public class ApiController : ControllerBase
             _ => StatusCodes.Status500InternalServerError,
         };
 
-        return Problem(statusCode: statusCode, title: error.Description);
+        return ApiProblemDetailsFactory.CreateProblemDetails(httpContext, error.Description, statusCode);
     }
 
-    private IActionResult Validationproblem(List<Error> errors)
+    private static ValidationProblemDetails ValidationProblem(List<Error> errors, HttpContext httpContext)
     {
         var modelStateDictionary = new ModelStateDictionary();
 
@@ -53,6 +44,6 @@ public class ApiController : ControllerBase
             modelStateDictionary.AddModelError(error.Code, error.Description);
         }
 
-        return ValidationProblem(modelStateDictionary);
+        return ApiProblemDetailsFactory.CreateValidationProblemDetails(httpContext, modelStateDictionary);
     }
 }

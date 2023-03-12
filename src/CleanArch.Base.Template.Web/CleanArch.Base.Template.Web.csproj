@@ -4,11 +4,20 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>4b1cfdee-54d0-4226-baf9-614b0973bc74</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CleanArch.Base.Template.Application\CleanArch.Base.Template.Application.csproj" />
     <ProjectReference Include="..\CleanArch.Base.Template.Infrastructure\CleanArch.Base.Template.Infrastructure.csproj" />
+    <ProjectReference Include="..\CleanArch.Base.Template.Persistence\CleanArch.Base.Template.Persistence.csproj" />
     <ProjectReference Include="..\CleanArch.Base.Template.Presentation\CleanArch.Base.Template.Presentation.csproj" />
   </ItemGroup>
 
