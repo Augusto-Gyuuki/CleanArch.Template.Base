@@ -13,6 +13,7 @@ COPY ["src/CleanArch.Base.Template.Domain/CleanArch.Base.Template.Domain.csproj"
 COPY ["src/CleanArch.Base.Template.Infrastructure/CleanArch.Base.Template.Infrastructure.csproj", "src/CleanArch.Base.Template.Infrastructure/"]
 COPY ["src/CleanArch.Base.Template.Persistence/CleanArch.Base.Template.Persistence.csproj", "src/CleanArch.Base.Template.Persistence/"]
 COPY ["src/CleanArch.Base.Template.Presentation/CleanArch.Base.Template.Presentation.csproj", "src/CleanArch.Base.Template.Presentation/"]
+COPY ["src/CleanArch.Base.Template.Integration/CleanArch.Base.Template.Integration.csproj", "src/CleanArch.Base.Template.Integration/"]
 RUN dotnet restore "src/CleanArch.Base.Template.Web/CleanArch.Base.Template.Web.csproj"
 COPY . .
 WORKDIR "/src/src/CleanArch.Base.Template.Web"

@@ -9,24 +9,25 @@ namespace CleanArch.Base.Template.Infrastructure.Authentication;
 
 public sealed class JwtTokenGenerator : IJwtTokenGenerator
 {
-    private readonly JwtSettings _jwtOptions;
+    private readonly JwtSettings _jwtSettings;
 
     public JwtTokenGenerator(IOptions<JwtSettings> JwtOptions)
     {
-        _jwtOptions = JwtOptions.Value;
+        _jwtSettings = JwtOptions.Value;
     }
 
     public string GenerateToken()
     {
         var signingCredentials = new SigningCredentials(
             new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_jwtOptions.Secret)),
+                Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
             SecurityAlgorithms.HmacSha256);
 
         var securityToken = new JwtSecurityToken(
-            issuer: _jwtOptions.Issuer,
-            audience: _jwtOptions.Audience,
-            expires: DateTime.UtcNow.AddMinutes(_jwtOptions.ExpiryMinutes),
+            issuer: _jwtSettings.Issuer,
+            audience: _jwtSettings.Audience,
+            notBefore: DateTime.UtcNow,
+            expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
             signingCredentials: signingCredentials);
 
         return new JwtSecurityTokenHandler().WriteToken(securityToken);

@@ -2,20 +2,24 @@
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace CleanArch.Base.Template.Application;
 
-[ExcludeFromCodeCoverage]
 public static class DependecyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection service)
     {
-        service.AddMediatR(typeof(DependecyInjection).Assembly);
+        service.AddMediatR(config =>
+        {
+            config.RegisterServicesFromAssemblyContaining<AssemblyReference>();
 
-        service.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-        service.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>), ServiceLifetime.Scoped);
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>), ServiceLifetime.Scoped);
+        });
+
+        //service.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        //service.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 
         service.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
