@@ -10,13 +10,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using ILogger = Serilog.ILogger;
 
 namespace CleanArch.Base.Template.Infrastructure;
 
-[ExcludeFromCodeCoverage]
 public static class DependecyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection service, InfrastructureSettings infrastructureOptions)

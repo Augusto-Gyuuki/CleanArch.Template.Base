@@ -1,6 +1,6 @@
 ﻿using NetArchTest.Rules;
 
-namespace CleanArch.Base.Template.Tests.Unit;
+namespace CleanArch.Base.Template.Tests.Unit.Architecture;
 
 public sealed class ArchitectureTests
 {

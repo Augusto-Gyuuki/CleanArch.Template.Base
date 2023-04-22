@@ -15,7 +15,7 @@ public class LoggingBehavior<TRequest, TResult> : IPipelineBehavior<TRequest, TR
         _logger = logger;
     }
 
-    public async Task<TResult> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResult> next)
+    public async Task<TResult> Handle(TRequest request, RequestHandlerDelegate<TResult> next, CancellationToken cancellationToken)
     {
         _logger.Information("Starting request {RequestName}", typeof(TRequest).Name);
 
@@ -23,7 +23,7 @@ public class LoggingBehavior<TRequest, TResult> : IPipelineBehavior<TRequest, TR
 
         if (result.IsError)
         {
-            _logger.Error("Error in request {RequestName} with message {ErrorMessage}", typeof(TRequest).Name, result.Errors.First().Description);
+            _logger.Error("Error in request {RequestName} with message {ErrorMessage}", typeof(TRequest).Name, result?.Errors?.First().Description);
         }
 
         _logger.Information("Completed request {RequestName}", typeof(TRequest).Name);
